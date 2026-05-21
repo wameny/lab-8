@@ -1,10 +1,8 @@
 import { BaseHttpClient } from "./baseHttpClient.js";
+import { GitHubService } from "./gitHubService.js";
 
 const client = new BaseHttpClient();
-
-const response = await client.request({
-  method: "GET",
-  url: "https://api.github.com/users/wameny",
-});
+const gitService = new GitHubService(client);
+const response = await gitService.getUser("wameny");
 
 console.log(response);
